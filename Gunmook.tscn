@@ -1,0 +1,62 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Gunmook.gd" type="Script" id=1]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Gunmook.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Boom 1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Boom 2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Boom 3.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Boom 4.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Boom 5.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Boom 6.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Boom 7.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Boom 8.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Boom 9.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Boom 10.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Boom 11.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Boom 12.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Gun.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "v4norm",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "v4die",
+"speed": 20.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30.99, 70.6135 )
+
+[node name="Gunmook" type="KinematicBody2D"]
+script = ExtResource( 1 )
+bullet = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "v4norm"
+playing = true
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Guntimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2( -0.540359, 10.8072 )
+
+[node name="Gunsprite" type="Sprite" parent="Gun"]
+position = Vector2( -21.7306, 4.63197 )
+texture = ExtResource( 16 )
+offset = Vector2( -15, -5 )
+
+[node name="Barrel" type="Node2D" parent="Gun"]
+position = Vector2( -57.8184, 2.70178 )
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="timeout" from="Guntimer" to="." method="_on_Guntimer_timeout"]

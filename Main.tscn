@@ -1,0 +1,259 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://TileMapv1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TileMapv2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TileMapv3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TileMapv4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://TileMapv5.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player.gd" type="Script" id=7]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Playerfornow.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Playerjumptemp 1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Playerjumptemp 2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Playerjumptemp 3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Playerjumptemp 4.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Playerdjump 1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Playerdjump 2.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Playerdjump 3.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Playerjump 1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Playerjump 2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Playerjump 3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Playerjump 4.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Playeridle 1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Playeridle 2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Playeridle 3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Playeridle 4.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Playeridle 5.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Playerfall 1.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Playerfall 2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Playerfall 3.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Playerfalltemp 3.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Playerfalltemp 2.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Playerfalltemp 1.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Playeridletemp 1.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Playeridletemp 2.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Playeridletemp 3.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Playeridletemp 4.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Playeridletemp 5.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Playerwalktemp 1.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Playerwalktemp 2.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Playerwalktemp 3.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Playerwalktemp 4.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Playerwalk 1.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Playerwalk 2.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Playerwalk 3.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Playerwalk 4.png" type="Texture" id=44]
+[ext_resource path="res://Fonts/crimson/OTF/Crimson-Roman.otf" type="DynamicFontData" id=45]
+[ext_resource path="res://Assets/Synth1.ogg" type="AudioStream" id=46]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "v1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "v2jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "v3djump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "v3jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "v3idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "v3fall",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "v2fall",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "v2idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "v2walk",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "v3walk",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23.7115, 65.7771 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 72
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 72
+font_data = ExtResource( 45 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+v1map = ExtResource( 2 )
+v2map = ExtResource( 3 )
+v3map = ExtResource( 4 )
+v4map = ExtResource( 5 )
+v5map = ExtResource( 6 )
+
+[node name="Mainmap" type="Node2D" parent="."]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+script = ExtResource( 7 )
+bullet = ExtResource( 8 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 950, 2100 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+animation = "v3idle"
+frame = 2
+playing = true
+
+[node name="Col" type="CollisionShape2D" parent="Player"]
+position = Vector2( 930.948, 2100.46 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Cam" type="Camera2D" parent="Player"]
+position = Vector2( 948.804, 2100.35 )
+zoom = Vector2( 2, 2 )
+
+[node name="Wydcam" type="Camera2D" parent="Player"]
+position = Vector2( 948.804, 2100.35 )
+zoom = Vector2( 8, 8 )
+
+[node name="Menu" type="Panel" parent="."]
+margin_left = 7002.0
+margin_top = 993.0
+margin_right = 8026.0
+margin_bottom = 1593.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Diedlabel" type="Label" parent="Menu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -356.5
+margin_top = -150.0
+margin_right = 356.5
+margin_bottom = -77.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+text = "You have died. Restart?"
+align = 1
+
+[node name="Title" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -356.5
+margin_top = -250.0
+margin_right = 356.5
+margin_bottom = -177.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+text = "Coding in Reverse"
+align = 1
+
+[node name="Instructions" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -423.5
+margin_top = -160.0
+margin_right = 423.5
+margin_bottom = 272.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 4 )
+text = "Controls:
+\"A and D\" to move horizontally
+\"W\" to jump. Press again to double jump.
+\"Enter\" to shoot.
+\"P\" to restart.
+Note: Earlier versions may be prior to the implementation of certain mechanics.
+
+
+
+
+Credits:
+Programming and Team Management: Cioran King
+Music Composition: Collin Tieman
+Artwork: James Connolly
+Font used: Crimson Roman by Sebastian Kosch"
+align = 1
+autowrap = true
+
+[node name="Diedbutton" type="Button" parent="Menu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.0
+margin_right = 115.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 5 )
+text = "Restart!"
+
+[node name="Startbutton" type="Button" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.0
+margin_top = 25.0
+margin_right = 115.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 5 )
+text = "Begin!"
+
+[node name="Menucam" type="Camera2D" parent="Menu"]
+anchor_mode = 0
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+autoplay = true
+[connection signal="v1" from="." to="Player" method="_on_Main_v1"]
+[connection signal="v2" from="." to="Player" method="_on_Main_v2"]
+[connection signal="v3" from="." to="Player" method="_on_Main_v3"]
+[connection signal="v4" from="." to="Player" method="_on_Main_v4"]
+[connection signal="v5" from="." to="Player" method="_on_Main_v5"]
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
+[connection signal="portalenter" from="Player" to="." method="_on_Player_portalenter"]
+[connection signal="animation_finished" from="Player/Sprite" to="Player" method="_on_Sprite_animation_finished"]
+[connection signal="pressed" from="Menu/Diedbutton" to="." method="_on_Diedbutton_pressed"]
+[connection signal="pressed" from="Menu/Startbutton" to="." method="_on_Startbutton_pressed"]

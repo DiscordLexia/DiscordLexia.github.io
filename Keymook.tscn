@@ -1,0 +1,104 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Keymook.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Mookidletemp 1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Mookidletemp 2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Mookidletemp 3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Boom 1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Boom 2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Boom 3.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Boom 4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Boom 5.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Boom 6.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Boom 7.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Boom 8.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Boom 9.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Boom 10.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Boom 11.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Boom 12.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Mookruntemp 1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Mookruntemp 2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Mookruntemp 3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Mookruntemp 4.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Mookturntemp 1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Mookturntemp 2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Mookturntemp 3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Key.png" type="Texture" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "v4idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "v4die",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "v4walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "v4yturn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "v4unturn",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 52.9778, 88.1797 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 52.2209, 54.9278 )
+
+[node name="Keymook" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 18, 26 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+animation = "v4idle"
+frame = 1
+playing = true
+
+[node name="Col" type="CollisionShape2D" parent="."]
+position = Vector2( 16.0191, -5.17036 )
+shape = SubResource( 2 )
+
+[node name="Col2" type="CollisionShape2D" parent="."]
+position = Vector2( 19.8474, 27.1984 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="RightSight" type="Area2D" parent="."]
+
+[node name="Colright" type="CollisionPolygon2D" parent="RightSight"]
+polygon = PoolVector2Array( 0, -300, 2500, -600, 2500, 400, 0, 200 )
+
+[node name="LeftSight" type="Area2D" parent="."]
+
+[node name="Colright" type="CollisionPolygon2D" parent="LeftSight"]
+polygon = PoolVector2Array( 0, -300, -2500, -600, -2500, 300, 0, 200 )
+
+[node name="Key" type="Node2D" parent="."]
+position = Vector2( 8.63379, -84.1804 )
+
+[node name="Sprite" type="Sprite" parent="Key"]
+position = Vector2( 19.0401, -69.8137 )
+rotation = -2.99814
+scale = Vector2( 0.3, 0.4 )
+texture = ExtResource( 24 )
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="body_entered" from="RightSight" to="." method="_on_Sight_body_entered"]
+[connection signal="body_exited" from="RightSight" to="." method="_on_Sight_body_exited"]
+[connection signal="body_entered" from="LeftSight" to="." method="_on_LeftSight_body_entered"]
+[connection signal="body_exited" from="LeftSight" to="." method="_on_LeftSight_body_exited"]
